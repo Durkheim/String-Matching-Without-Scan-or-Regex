@@ -3,8 +3,9 @@ def match?(string, substring)
   substring_array = substring.split("")
   character_matches = []
   substring_array.each_with_index do |substring_character, substring_index|
-    matches = check_for_character_match(string_array, substring_array, substring_character, substring_index, character_matches)
+    check_for_character_match(string_array, substring_array, substring_character, substring_index, character_matches)
   end
+  puts character_matches
   character_matches.join("") == substring ? true : false
 end
 
@@ -19,7 +20,6 @@ def check_for_character_match(string_array, substring_array, substring_character
       end
     end
   end
-  return character_matches
 end
 
 p match?("likes", "like") == true
