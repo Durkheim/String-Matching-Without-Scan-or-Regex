@@ -11,19 +11,19 @@ Output: true or false
 
 <b>Input:</b> ("likes", "like")
 
-Output: true
+<b>Output:</b> true
 
-Input: ("muchlikes", "like")
+<b>Input:</b> ("muchlikes", "like")
 
-Output: true
+<b>Output:</b> true
 
-Input: ("ikelmuchlikes", "like")
+<b>Input:</b> ("ikelmuchlikes", "like")
 
-Output: true
+<b>Output:</b> true
 
-Input: ("bass1lurv", " 1lurv")
+<b>Input:</b> ("bass1lurv", " 1lurv")
 
-Output: false
+<b>Output:</b> false
 
 Input: ("1basslurv", "1lurv")
 
