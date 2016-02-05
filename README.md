@@ -10,16 +10,21 @@ Output: true or false
 ##### Example:
 
 Input: ("likes", "like")
+
 Output: true
 
 Input: ("muchlikes", "like")
+
 Output: true
 
 Input: ("ikelmuchlikes", "like")
+
 Output: true
 
 Input: ("bass1lurv", " 1lurv")
+
 Output: false
 
 Input: ("1basslurv", "1lurv")
+
 Outpue: false
