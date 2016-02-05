@@ -7,7 +7,7 @@ Write a :match? method that returns true or false if a substring is found within
 Input: (string, substring)
 Output: true or false
 
-##### Example:
+##### Examples:
 
 <b>Input:</b> ("likes", "like")</br>
 <b>Output:</b> true
