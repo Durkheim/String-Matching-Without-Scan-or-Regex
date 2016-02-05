@@ -1,13 +1,13 @@
 # String Matching Without Scan or Regex
 
-#### Objective
+### Objective
 
 Write a :match? method that returns true or false if a substring is found within a string.
 
-Input: (string, substring)
-Output: true or false
+<b>Input:</b> (string, substring)</br>
+<b>Output:</b> true or false
 
-##### Examples:
+#### Examples:
 
 <b>Input:</b> ("likes", "like")</br>
 <b>Output:</b> true
