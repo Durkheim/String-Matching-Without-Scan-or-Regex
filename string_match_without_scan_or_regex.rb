@@ -1,22 +1,25 @@
 def match?(string, substring)
   string_array = string.split("")
   substring_array = substring.split("")
-  matches = []
+  character_matches = []
   substring_array.each_with_index do |substring_character, substring_index|
-    matches.push(substring_character) if substring_index == 0 && string_array.include?(substring_character)
-    matches = check_position_for_match(string_array, substring_array, substring_character, substring_index, matches) if substring_index > 0 && string_array.include?(substring_character)
+    matches = check_for_character_match(string_array, substring_array, substring_character, substring_index, character_matches)
   end
-  matches.join("") == substring ? true : false
+  character_matches.join("") == substring ? true : false
 end
 
-def check_position_for_match(string_array, substring_array, substring_character, substring_index, matches)
-  string_array.each_with_index do |string_character, string_index|
-    if string_character == substring_character && string_array[string_index - 1] == substring_array[substring_index - 1]
-      matches.push(substring_character)
-      break
+def check_for_character_match(string_array, substring_array, substring_character, substring_index, character_matches)
+  if substring_index == 0 && string_array.include?(substring_character)
+    character_matches.push(substring_character)
+  elsif substring_index > 0 && string_array.include?(substring_character)
+    string_array.each_with_index do |string_character, string_index|
+      if string_character == substring_character && string_array[string_index - 1] == substring_array[substring_index - 1]
+        character_matches.push(substring_character)
+        break
+      end
     end
   end
-  return matches
+  return character_matches
 end
 
 p match?("likes", "like") == true
