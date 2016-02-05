@@ -3,12 +3,12 @@ def match?(string, substring)
   substring_array = substring.split("")
   character_matches = []
   substring_array.each_with_index do |substring_character, substring_index|
-    check_for_character_match(string_array, substring_array, substring_character, substring_index, character_matches)
+    find_character_match(string_array, substring_array, substring_character, substring_index, character_matches)
   end
   character_matches.join("") == substring ? true : false
 end
 
-def check_for_character_match(string_array, substring_array, substring_character, substring_index, character_matches)
+def find_character_match(string_array, substring_array, substring_character, substring_index, character_matches)
   if substring_index == 0 && string_array.include?(substring_character)
     character_matches.push(substring_character)
   elsif substring_index > 0 && string_array.include?(substring_character)
