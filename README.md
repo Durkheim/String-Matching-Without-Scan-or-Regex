@@ -9,7 +9,7 @@ Output: true or false
 
 ##### Example:
 
-Input: ("likes", "like")
+<b>Input:</b> ("likes", "like")
 
 Output: true
 
