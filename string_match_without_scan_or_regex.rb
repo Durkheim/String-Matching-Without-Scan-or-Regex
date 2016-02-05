@@ -14,10 +14,12 @@ def find_character_match(string_array, substring_array, substring_character, sub
       character_matches.push(substring_character)
     elsif substring_index > 0
       string_array.each_with_index do |string_character, string_index|
-        characters_match = string_character == substring_character
+
+        characters_do_match = string_character == substring_character
         previous_string_index_not_negative = string_index - 1 > -1
-        previous_characters_match = string_array[string_index - 1] == substring_array[substring_index - 1]
-        if characters_match && previous_string_index_not_negative && previous_characters_match
+        previous_characters_do_match = string_array[string_index - 1] == substring_array[substring_index - 1]
+
+        if characters_do_match && previous_string_index_not_negative && previous_characters_do_match
           character_matches.push(substring_character)
           break
         end
