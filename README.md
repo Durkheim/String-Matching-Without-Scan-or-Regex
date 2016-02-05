@@ -9,17 +9,17 @@ Output: true or false
 
 ##### Example:
 
-<b>Input:</b> ("likes", "like")
+<b>Input:</b> ("likes", "like")</br>
 <b>Output:</b> true
 
-<b>Input:</b> ("muchlikes", "like")
+<b>Input:</b> ("muchlikes", "like")</br>
 <b>Output:</b> true
 
-<b>Input:</b> ("ikelmuchlikes", "like")
+<b>Input:</b> ("ikelmuchlikes", "like")</br>
 <b>Output:</b> true
 
-<b>Input:</b> ("bass1lurv", " 1lurv")
+<b>Input:</b> ("bass1lurv", " 1lurv")</br>
 <b>Output:</b> false
 
-<b>Input:</b> ("1basslurv", "1lurv")
+<b>Input:</b> ("1basslurv", "1lurv")</br>
 <b>Outpue:</b> false
