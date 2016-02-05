@@ -5,7 +5,6 @@ def match?(string, substring)
   substring_array.each_with_index do |substring_character, substring_index|
     check_for_character_match(string_array, substring_array, substring_character, substring_index, character_matches)
   end
-  puts character_matches
   character_matches.join("") == substring ? true : false
 end
 
