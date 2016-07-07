@@ -1,16 +1,29 @@
 class String
 
   def match?(substring)
-    matches = generate_matches(self, substring, [])
-    matches.include?(substring)
+    if substring.class == String
+      matches = generate_matches(self, substring, [])
+      matches.include?(substring)
+    else
+      wrong_argument_type
+    end
   end
 
   def match_count(substring)
-    matches = generate_matches(self, substring, [])
-    matches.length
+    if substring.class == String
+      matches = generate_matches(self, substring, [])
+      matches.length
+    else
+      wrong_argument_type
+    end
   end
 
   private
+
+  def wrong_argument_type
+    raise 'wrong argument type (expected String)'
+  end
+
 
   def generate_matches(string, substring, collection_of_matches)
 

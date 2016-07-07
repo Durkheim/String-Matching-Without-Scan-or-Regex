@@ -27,16 +27,30 @@ describe String do
     end
   end
 
+
   describe '#match?' do
 
     it 'should be a defined method on the class String' do
       expect(String.method_defined?(:match?)).to be(true)
-      #a test against false positives
+      #a test against false positives for defined methods
       expect(String.method_defined?(:matchez?)).to be(false)
+    end
+
+    it 'will raise an error if called on an instance that is not a String object' do
+      expect{[].match?(string)}.to raise_error(NoMethodError)
+      expect{1.match?(string)}.to raise_error(NoMethodError)
+      expect{{}.match?(string)}.to raise_error(NoMethodError)
     end
 
     it 'expects a single argument' do
       expect(string.method(:match?).arity).to eq(1)
+      expect{string.match?(string, substring)}.to raise_error(ArgumentError)
+    end
+
+    it 'expects a string as an argument' do
+      expect{string.match?([])}.to raise_error('wrong argument type (expected String)')
+      expect{string.match_count(1)}.to raise_error('wrong argument type (expected String)')
+      expect{string.match_count({})}.to raise_error('wrong argument type (expected String)')
     end
 
     it 'should return true when a match is found' do
@@ -49,16 +63,30 @@ describe String do
 
   end
 
+
   describe '#match_count' do
 
     it 'should be a defined method on the class String' do
       expect(String.method_defined?(:match_count)).to be(true)
-      #a test against false positives
+      #a test against false positives for defined methods
       expect(String.method_defined?(:match_countz)).to be(false)
+    end
+
+    it 'will raise an error if called on an instance that is not a String object' do
+      expect{[].match_count(substring)}.to raise_error(NoMethodError)
+      expect{1.match_count(substring)}.to raise_error(NoMethodError)
+      expect{{}.match_count(substring)}.to raise_error(NoMethodError)
     end
 
     it 'expects a single argument' do
       expect(string.method(:match_count).arity).to eq(1)
+      expect{string.match?(string, substring)}.to raise_error(ArgumentError)
+    end
+
+    it 'expects a string as an argument' do
+      expect{string.match_count([])}.to raise_error('wrong argument type (expected String)')
+      expect{string.match_count(1)}.to raise_error('wrong argument type (expected String)')
+      expect{string.match_count({})}.to raise_error('wrong argument type (expected String)')
     end
 
     it 'should return an integer for the number of matches' do
