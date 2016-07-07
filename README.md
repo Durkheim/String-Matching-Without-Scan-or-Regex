@@ -2,24 +2,34 @@
 
 ### Objective
 
-Write a :match? method that returns true or false if a substring is found within a string.
+Without using :scan or RegEx perform the following:
 
-<b>Input:</b> (string, substring)</br>
-<b>Output:</b> true or false
+- write a :match? method that returns true or false if a substring is found within a string
+- write a :match_count method that returns an integer value for the number of matches
+- write a :match_indices method that returns an array of integers, indicating indices where matches in the string occur
 
-#### Examples:
+### Requirements
 
-<b>Input:</b> ("likes", "like")</br>
-<b>Output:</b> true
+gem install rspec
 
-<b>Input:</b> ("muchlikes", "like")</br>
-<b>Output:</b> true
+### Pseudocode
 
-<b>Input:</b> ("ikelmuchlikes", "like")</br>
-<b>Output:</b> true
+I. Write a method solely dedicated to generating a list of matches through recursion
+II. Add the class methods :match?, :match_count, and :match_indices to String. Each method should reference the method used to generate the list of matches.
+III. Raise an exception error if the argument passed in for each method is not a valid type
 
-<b>Input:</b> ("bass1lurv", " 1lurv")</br>
-<b>Output:</b> false
+###Solution
 
-<b>Input:</b> ("1basslurv", "1lurv")</br>
-<b>Outpue:</b> false
+To recursively generate a list of matches, the original string was sliced from the 0 index to the length of the substring. The slice was then compared to the substring.
+If the two matched, the slice was then collected in a hash, along with the index at which the match occurred in the original string. This process was done until
+the original string was sliced down to a length of 1, at which point the method was terminated and the list of matches was returned. The implementation to generate the list of matches
+was kept private, so that objects and methods outside the class would not have access, since, on an interface level, it's only necessary to determine if there is a match, the match count,
+and where the matches occurred. The method for generating the list was called :generate_matches.
+
+
+The methods :match?, :match_count, and :match_indices all reference :generate_matches and interact with generated list to give each desired return. A spec was created to
+test assumptions and validity. To run the spec, enter the following in the terminal:
+
+rspec string_match_without_scan_or_regex_spec.rb
+
+
