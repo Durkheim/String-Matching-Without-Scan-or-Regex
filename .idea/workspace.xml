@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7e4cd13-1237-4070-a40a-42f26c1b48e1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/string_match_without_scan_or_regex.rb" afterPath="$PROJECT_DIR$/string_match_without_scan_or_regex.rb" />
     </list>
     <ignored path="String-Matching-Without-Scan-or-Regex.iws" />
@@ -27,8 +26,8 @@
       <file leaf-file-name="string_match_without_scan_or_regex.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/string_match_without_scan_or_regex.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="34" selection-end-column="3" />
+            <state relative-caret-position="45">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="38" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -229,12 +228,12 @@
       <workItem from="1467829322480" duration="563000" />
       <workItem from="1467830190925" duration="4665000" />
       <workItem from="1467844044315" duration="756000" />
-      <workItem from="1467911090288" duration="1983000" />
+      <workItem from="1467911090288" duration="2839000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7967000" />
+    <option name="totallyTimeSpent" value="8823000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="881" y="165" width="1396" height="877" extended-state="0" />
@@ -293,8 +292,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/string_match_without_scan_or_regex.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="34" selection-end-column="3" />
+        <state relative-caret-position="45">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="38" selection-end-column="3" />
           <folding />
         </state>
       </provider>

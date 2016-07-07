@@ -1,11 +1,18 @@
+#The purpose of this class is for matching substrings within string
+#without the use of :scan or RegEx. Public methods include :match? and :match_count
+
 class StringMatcher
 
   def match?(string, substring)
+
+    #pass in empty array to collect matches
     matches = generate_matches(string, substring, [])
     matches.include?(substring)
   end
 
   def match_count(string, substring)
+
+    #pass in empty array to collect matches
     matches = generate_matches(string, substring, [])
     matches.length
   end
@@ -21,7 +28,7 @@ class StringMatcher
     if string.length > 1
       next_string_section_array = string.split('')
       next_string_section_array.shift
-      next_string_section = next_string_section.join('')
+      next_string_section = next_string_section_array.join('')
       generate_matches(next_string_section, substring, collection_of_matches)
     else
       collection_of_matches
