@@ -1,19 +1,19 @@
 #The purpose of this class is for matching substrings within string
 #without the use of :scan or RegEx. Public methods include :match? and :match_count
 
-class StringMatcher
+class String
 
-  def match?(string, substring)
+  def match?(substring)
 
     #pass in empty array to collect matches
-    matches = generate_matches(string, substring, [])
+    matches = generate_matches(self, substring, [])
     matches.include?(substring)
   end
 
-  def match_count(string, substring)
+  def match_count(substring)
 
     #pass in empty array to collect matches
-    matches = generate_matches(string, substring, [])
+    matches = generate_matches(self, substring, [])
     matches.length
   end
 
