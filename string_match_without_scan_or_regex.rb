@@ -1,4 +1,4 @@
-#The purpose of this class is for matching substrings within string
+#Adding methods to String class to find substring matches within a string
 #without the use of :scan or RegEx. Public methods include :match? and :match_count
 
 class String
