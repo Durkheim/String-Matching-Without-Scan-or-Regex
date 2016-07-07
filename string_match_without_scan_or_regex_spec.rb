@@ -105,6 +105,8 @@ describe String do
 
   #Testing #match_indices functionality for objects of the class String
   describe '#match_indices' do
+    let(:new_string){"muchlikeslike"}
+    let(:new_substring){"like"}
 
     it 'should be a defined method on the class String' do
       expect(String.method_defined?(:match_indices)).to be(true)
@@ -120,7 +122,7 @@ describe String do
 
     it 'expects a single argument' do
       expect(string.method(:match_indices).arity).to eq(1)
-      expect{string.match_indices?(string, substring)}.to raise_error(ArgumentError)
+      expect{string.match_indices(string, substring)}.to raise_error(ArgumentError)
     end
 
     it 'expects a string as an argument' do
@@ -131,7 +133,7 @@ describe String do
 
     it 'should return an array of integers indicating indices of a match' do
       expect(string.match_indices(substring)).to be_kind_of(Array)
-      expect(string.match_indices(substring)).to eq(2)
+      expect(new_string.match_indices(new_substring)).to eq([4,9])
       expect(string.match_indices(substring_two)).to be_kind_of(Array)
       expect(string.match_indices(substring_two)).to eq([])
     end
