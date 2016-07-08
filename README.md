@@ -14,9 +14,9 @@ gem install rspec
 
 ### Pseudocode
 
-I. Write a method solely dedicated to generating a list of matches through recursion
-II. Add the class methods :match?, :match_count, and :match_indices to String. Each method should reference the method used to generate the list of matches.
-III. Raise an exception error if the argument passed in for each method is not a valid type
+I. Write a method solely dedicated to generating a list of matches through recursion<br/>
+II. Add the class methods :match?, :match_count, and :match_indices to String. Each method should reference the method used to generate the list of matches.<br/>
+III. Raise an exception error if the argument passed in for each method is not a valid type<br/>
 
 ###Solution
 
