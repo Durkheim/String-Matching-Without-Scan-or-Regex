@@ -41,6 +41,7 @@ class String
   end
 
 
+  #
   def generate_matches(string, substring, collection_of_matches, match_index)
 
     string_slice = string.slice(0, substring.length)
