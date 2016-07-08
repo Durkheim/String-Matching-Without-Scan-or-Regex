@@ -1,53 +1,41 @@
-class StringMatcher
+class Matcher
 
-  def match?(string, substring)
-    if substring.class == String
-      #passing hash to collect matches, as well as the starting
-      #index 0 for the recursive call
-      matches = generate_matches(string, substring, [])
-      matches.include?(substring)
-    else
-      wrong_argument_type
-    end
+  def match?(candidate, target)
+
+    candidate_string = candidate.to_s
+    target_string = target.to_s
+
+    matches = generate_matches(candidate_string, target_string, [])
+    matches.include?(target_string)
   end
 
-  def match_count(string, substring)
-    if substring.class == String
-      #passing hash to collect matches, as well as the starting
-      #index 0 for the recursive call
-      matches = generate_matches(string, substring, [])
-      matches.count(substring)
-    else
-      wrong_argument_type
-    end
+  def match_count(candidate, target)
+
+    candidate_string = candidate.to_s
+    target_string = target.to_s
+
+    matches = generate_matches(candidate_string, target_string, [])
+    matches.count(target_string)
   end
 
-  def match_indices(string, substring)
-    if substring.class == String
-      #passing hash to collect matches, as well as the starting
-      #index 0 for the recursive call
-      matches = generate_matches(string, substring, [])
-      matches.each_index.select{|index| matches[index] == substring}
-    else
-      wrong_argument_type
-    end
+  def match_indices(candidate, target)
+
+    candidate_string = candidate.to_s
+    target_string = target.to_s
+
+    matches = generate_matches(candidate_string, target_string, [])
+    matches.each_index.select{|index| matches[index] == target_string}
   end
 
   private
 
-  #used as a constant for wrong argument type
-  def wrong_argument_type
-    raise 'wrong argument type (expected String)'
-  end
+  #for first pass, collection_of_matches should be []
+  def generate_matches(candidate_string, target_string, collection_of_matches)
 
-
-  #for first pass, collection_of_matches should be {} and match_index should be 0
-  def generate_matches(string, substring, collection_of_matches)
-
-    string.start_with?(substring) ? collection_of_matches.push(substring) : collection_of_matches.push(nil)
-    return collection_of_matches if string.empty?
-    next_string_section = string.slice(1, string.length)
-    generate_matches(next_string_section, substring, collection_of_matches)
+    candidate_string.start_with?(target_string) ? collection_of_matches.push(target_string) : collection_of_matches.push(nil)
+    return collection_of_matches if candidate_string.empty?
+    next_string_section = candidate_string.slice(1, candidate_string.length)
+    generate_matches(next_string_section, target_string, collection_of_matches)
 
   end
 

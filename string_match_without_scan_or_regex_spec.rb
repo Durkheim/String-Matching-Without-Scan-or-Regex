@@ -1,6 +1,8 @@
 require_relative 'string_match_without_scan_or_regex'
 
-describe String do
+describe Matcher do
+
+  let(:matcher){Matcher.new}
 
   let(:randomly_generated_strings){ (0..2).map{(0..rand(1..100)).map{(rand(127)).chr}.join}}
   let(:string){ randomly_generated_strings[0] + "like" + randomly_generated_strings[1] + "like" + randomly_generated_strings[2]}
@@ -15,19 +17,6 @@ describe String do
       expect(String.method_defined?(:match?)).to be(true)
       #a test against false positives for defined methods
       expect(String.method_defined?(:matchez?)).to be(false)
-    end
-
-    it 'will raise an error if called on an instance that is not a String object' do
-      expect{[].match?(string)}.to raise_error(NoMethodError)
-      expect{1.match?(string)}.to raise_error(NoMethodError)
-      expect{{}.match?(string)}.to raise_error(NoMethodError)
-    end
-
-
-    it 'expects a string as an argument' do
-      expect{string.match?([])}.to raise_error('wrong argument type (expected String)')
-      expect{string.match_count(1)}.to raise_error('wrong argument type (expected String)')
-      expect{string.match_count({})}.to raise_error('wrong argument type (expected String)')
     end
 
     it 'should return true when a match is found' do
@@ -50,18 +39,6 @@ describe String do
       expect(String.method_defined?(:match_countz)).to be(false)
     end
 
-    it 'will raise an error if called on an instance that is not a String object' do
-      expect{[].match_count(substring)}.to raise_error(NoMethodError)
-      expect{1.match_count(substring)}.to raise_error(NoMethodError)
-      expect{{}.match_count(substring)}.to raise_error(NoMethodError)
-    end
-
-    it 'expects a string as an argument' do
-      expect{string.match_count([])}.to raise_error('wrong argument type (expected String)')
-      expect{string.match_count(1)}.to raise_error('wrong argument type (expected String)')
-      expect{string.match_count({})}.to raise_error('wrong argument type (expected String)')
-    end
-
     it 'should return an integer for the number of matches' do
       expect(string.match_count(substring_with_match)).to be_kind_of(Integer)
       expect(string.match_count(substring_with_match)).to eq(2)
@@ -81,19 +58,6 @@ describe String do
       expect(String.method_defined?(:match_indices)).to be(true)
       #a test against false positives for defined methods
       expect(String.method_defined?(:match_indicez)).to be(false)
-    end
-
-    it 'will raise an error if called on an instance that is not a String object' do
-      expect{[].match_indices(substring)}.to raise_error(NoMethodError)
-      expect{1.match_indices(substring)}.to raise_error(NoMethodError)
-      expect{{}.match_indices(substring)}.to raise_error(NoMethodError)
-    end
-
-
-    it 'expects a string as an argument' do
-      expect{string.match_indices([])}.to raise_error('wrong argument type (expected String)')
-      expect{string.match_indices(1)}.to raise_error('wrong argument type (expected String)')
-      expect{string.match_indices({})}.to raise_error('wrong argument type (expected String)')
     end
 
     it 'should return an array of integers indicating indices of a match' do
