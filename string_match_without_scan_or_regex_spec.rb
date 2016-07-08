@@ -47,6 +47,15 @@ describe Matcher do
       expect(matcher.match_count(candidate_string, target_string_with_match)).to eq(2)
       expect(matcher.match_count(candidate_string, target_string_with_no_match)).to be_kind_of(Integer)
       expect(matcher.match_count(candidate_string, target_string_with_no_match)).to eq(0)
+
+      expect(matcher.match_count(candidate_array, target_array_with_match)).to be_kind_of(Integer)
+      expect(matcher.match_count(candidate_array, target_array_with_match)).to eq(1)
+      expect(matcher.match_count(candidate_array, target_array_with_no_match)).to eq(0)
+
+      expect(matcher.match_count(candidate_hash, target_hash_with_match)).to be_kind_of(Integer)
+      expect(matcher.match_count(candidate_hash, target_hash_with_match)).to eq(1)
+      expect(matcher.match_count(candidate_hash, target_hash_with_no_match)).to eq(0)
+
     end
 
   end

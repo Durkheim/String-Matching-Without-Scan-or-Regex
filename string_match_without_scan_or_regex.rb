@@ -1,6 +1,6 @@
 class Matcher
 
-  def match?(candidate, target)
+  def self.match?(candidate, target)
 
     candidate_string = candidate.to_s
     target_string = target.to_s
@@ -9,7 +9,7 @@ class Matcher
     matches.include?(target_string)
   end
 
-  def match_count(candidate, target)
+  def self.match_count(candidate, target)
 
     candidate_string = candidate.to_s
     target_string = target.to_s
@@ -18,7 +18,7 @@ class Matcher
     matches.count(target_string)
   end
 
-  def match_indices(candidate, target)
+  def self.match_indices(candidate, target)
 
     candidate_string = candidate.to_s
     target_string = target.to_s
