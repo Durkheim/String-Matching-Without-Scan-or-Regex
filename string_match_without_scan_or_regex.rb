@@ -41,7 +41,7 @@ class String
   end
 
 
-  #
+  #for first pass, collection_of_matches should be {} and match_index should be 0
   def generate_matches(string, substring, collection_of_matches, match_index)
 
     string_slice = string.slice(0, substring.length)
