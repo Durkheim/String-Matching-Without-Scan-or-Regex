@@ -4,30 +4,8 @@ describe String do
 
   let(:randomly_generated_strings){ (0..2).map{(0..rand(1..100)).map{(rand(127)).chr}.join}}
   let(:string){ randomly_generated_strings[0] + "like" + randomly_generated_strings[1] + "like" + randomly_generated_strings[2]}
-  let(:substring){"like"}
-  let(:substring_two){"nope"}
-
-
-  #Testing to ensure above variables used in the spec are objects of the class String
-  describe 'string variables' do
-    describe 'string' do
-      it 'should be an object of the class String' do
-        expect(string).to be_kind_of(String)
-      end
-    end
-
-    describe 'substring' do
-      it 'should be an object of the class String' do
-        expect(substring).to be_kind_of(String)
-      end
-    end
-
-    describe 'substring_two' do
-      it 'should be an object of the class String' do
-        expect(substring_two).to be_kind_of(String)
-      end
-    end
-  end
+  let(:substring_with_match){"like"}
+  let(:substring_with_no_match){"nope"}
 
 
   #Testing #match? functionality for objects of the class String
@@ -45,10 +23,6 @@ describe String do
       expect{{}.match?(string)}.to raise_error(NoMethodError)
     end
 
-    it 'expects a single argument' do
-      expect(string.method(:match?).arity).to eq(1)
-      expect{string.match?(string, substring)}.to raise_error(ArgumentError)
-    end
 
     it 'expects a string as an argument' do
       expect{string.match?([])}.to raise_error('wrong argument type (expected String)')
@@ -57,11 +31,11 @@ describe String do
     end
 
     it 'should return true when a match is found' do
-      expect(string.match?(substring)).to be(true)
+      expect(string.match?(substring_with_match)).to be(true)
     end
 
     it 'should return false when a match is not found' do
-      expect(string.match?(substring_two)).to be(false)
+      expect(string.match?(substring_with_no_match)).to be(false)
     end
 
   end
@@ -82,11 +56,6 @@ describe String do
       expect{{}.match_count(substring)}.to raise_error(NoMethodError)
     end
 
-    it 'expects a single argument' do
-      expect(string.method(:match_count).arity).to eq(1)
-      expect{string.match?(string, substring)}.to raise_error(ArgumentError)
-    end
-
     it 'expects a string as an argument' do
       expect{string.match_count([])}.to raise_error('wrong argument type (expected String)')
       expect{string.match_count(1)}.to raise_error('wrong argument type (expected String)')
@@ -94,10 +63,10 @@ describe String do
     end
 
     it 'should return an integer for the number of matches' do
-      expect(string.match_count(substring)).to be_kind_of(Integer)
-      expect(string.match_count(substring)).to eq(2)
-      expect(string.match_count(substring_two)).to be_kind_of(Integer)
-      expect(string.match_count(substring_two)).to eq(0)
+      expect(string.match_count(substring_with_match)).to be_kind_of(Integer)
+      expect(string.match_count(substring_with_match)).to eq(2)
+      expect(string.match_count(substring_with_no_match)).to be_kind_of(Integer)
+      expect(string.match_count(substring_with_no_match)).to eq(0)
     end
 
   end
@@ -106,7 +75,7 @@ describe String do
   #Testing #match_indices functionality for objects of the class String
   describe '#match_indices' do
     let(:new_string){"muchlikeslike"}
-    let(:new_substring){"like"}
+    let(:new_substring_with_match){"like"}
 
     it 'should be a defined method on the class String' do
       expect(String.method_defined?(:match_indices)).to be(true)
@@ -120,10 +89,6 @@ describe String do
       expect{{}.match_indices(substring)}.to raise_error(NoMethodError)
     end
 
-    it 'expects a single argument' do
-      expect(string.method(:match_indices).arity).to eq(1)
-      expect{string.match_indices(string, substring)}.to raise_error(ArgumentError)
-    end
 
     it 'expects a string as an argument' do
       expect{string.match_indices([])}.to raise_error('wrong argument type (expected String)')
@@ -132,11 +97,11 @@ describe String do
     end
 
     it 'should return an array of integers indicating indices of a match' do
-      expect(string.match_indices(substring)).to be_kind_of(Array)
+      expect(string.match_indices(substring_with_match)).to be_kind_of(Array)
       #using new_string and new_substring to easily verify position
-      expect(new_string.match_indices(new_substring)).to eq([4,9])
-      expect(string.match_indices(substring_two)).to be_kind_of(Array)
-      expect(string.match_indices(substring_two)).to eq([])
+      expect(new_string.match_indices(new_substring_with_match)).to eq([4,9])
+      expect(string.match_indices(substring_with_no_match)).to be_kind_of(Array)
+      expect(string.match_indices(substring_with_no_match)).to eq([])
     end
 
   end
