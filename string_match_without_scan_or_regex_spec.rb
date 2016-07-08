@@ -133,6 +133,7 @@ describe String do
 
     it 'should return an array of integers indicating indices of a match' do
       expect(string.match_indices(substring)).to be_kind_of(Array)
+      #using new_string and new_substring to easily verify position
       expect(new_string.match_indices(new_substring)).to eq([4,9])
       expect(string.match_indices(substring_two)).to be_kind_of(Array)
       expect(string.match_indices(substring_two)).to eq([])
