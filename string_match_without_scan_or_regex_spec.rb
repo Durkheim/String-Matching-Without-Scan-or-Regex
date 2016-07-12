@@ -1,6 +1,6 @@
 require_relative 'string_match_without_scan_or_regex'
 
-describe Matcher do
+describe StringMatcher do
 
   let(:randomly_generated_strings){ (0..2).map{(0..rand(1..100)).map{(rand(127)).chr}.join}}
   let(:candidate_string){ randomly_generated_strings[0] + "like" + randomly_generated_strings[1] + "like" + randomly_generated_strings[2]}
@@ -22,74 +22,41 @@ describe Matcher do
 
 
   #Testing #match? functionality for objects
-  describe '#match?' do
+  describe '#recursive_match?' do
 
     it 'should return true when a match is found' do
-      expect(Matcher.match?(candidate_string, target_string_with_match)).to be(true)
-      expect(Matcher.match?(candidate_array, target_array_with_match)).to be(true)
-      expect(Matcher.match?(candidate_hash, target_hash_with_match)).to be(true)
-      expect(Matcher.match?(candidate_integer, target_integer_with_match)).to be(true)
+      expect(StringMatcher.recursive_match?(candidate_string, target_string_with_match)).to be(true)
+      expect(StringMatcher.recursive_match?(candidate_array, target_array_with_match)).to be(true)
+      expect(StringMatcher.recursive_match?(candidate_hash, target_hash_with_match)).to be(true)
+      expect(StringMatcher.recursive_match?(candidate_integer, target_integer_with_match)).to be(true)
     end
 
     it 'should return false when a match is not found' do
-      expect(Matcher.match?(candidate_string, target_string_with_no_match)).to be(false)
-      expect(Matcher.match?(candidate_array, target_array_with_no_match)).to be(false)
-      expect(Matcher.match?(candidate_hash, target_hash_with_no_match)).to be(false)
-      expect(Matcher.match?(candidate_integer, target_integer_with_no_match)).to be(false)
+      expect(StringMatcher.recursive_match?(candidate_string, target_string_with_no_match)).to be(false)
+      expect(StringMatcher.recursive_match?(candidate_array, target_array_with_no_match)).to be(false)
+      expect(StringMatcher.recursive_match?(candidate_hash, target_hash_with_no_match)).to be(false)
+      expect(StringMatcher.recursive_match?(candidate_integer, target_integer_with_no_match)).to be(false)
     end
 
   end
 
+  describe '#iterative_match?' do
 
-  #Testing #match_count functionality for objects
-  describe '#match_count' do
+    it 'should return true when a match is found' do
+      expect(StringMatcher.iterative_match?(candidate_string, target_string_with_match)).to be(true)
+      expect(StringMatcher.iterative_match?(candidate_array, target_array_with_match)).to be(true)
+      expect(StringMatcher.iterative_match?(candidate_hash, target_hash_with_match)).to be(true)
+      expect(StringMatcher.iterative_match?(candidate_integer, target_integer_with_match)).to be(true)
+    end
 
-    it 'should return an integer for the number of matches' do
-
-        #string comparisons
-        expect(Matcher.match_count(candidate_string, target_string_with_match)).to be_kind_of(Integer)
-        expect(Matcher.match_count(candidate_string, target_string_with_match)).to eq(2)
-        expect(Matcher.match_count(candidate_string, target_string_with_no_match)).to be_kind_of(Integer)
-        expect(Matcher.match_count(candidate_string, target_string_with_no_match)).to eq(0)
-
-        #array comparisons
-        expect(Matcher.match_count(candidate_array, target_array_with_match)).to be_kind_of(Integer)
-        expect(Matcher.match_count(candidate_array, target_array_with_match)).to eq(1)
-        expect(Matcher.match_count(candidate_array, target_array_with_no_match)).to eq(0)
-
-        #hash comparisons
-
-        expect(Matcher.match_count(candidate_hash, target_hash_with_match)).to be_kind_of(Integer)
-        expect(Matcher.match_count(candidate_hash, target_hash_with_match)).to eq(1)
-        expect(Matcher.match_count(candidate_hash, target_hash_with_no_match)).to eq(0)
-
-        #integer comparisons
-        expect(Matcher.match_count(candidate_integer, target_integer_with_no_match)).to be_kind_of(Integer)
-        expect(Matcher.match_count(candidate_integer, target_integer_with_match)).to be > 0
-        expect(Matcher.match_count(candidate_integer, target_integer_with_no_match)).to eq(0)
-
+    it 'should return false when a match is not found' do
+      expect(StringMatcher.recursive_match?(candidate_string, target_string_with_no_match)).to be(false)
+      expect(StringMatcher.recursive_match?(candidate_array, target_array_with_no_match)).to be(false)
+      expect(StringMatcher.recursive_match?(candidate_hash, target_hash_with_no_match)).to be(false)
+      expect(StringMatcher.recursive_match?(candidate_integer, target_integer_with_no_match)).to be(false)
     end
 
   end
 
-
-  #Testing #match_indices functionality for objects of the class String
-  describe '#match_indices_for_strings' do
-
-    let(:new_candidate_string){"muchlikeslike"}
-    let(:new_target_string_with_match){"like"}
-
-    it 'should return an array of integers if there is at least one match' do
-
-      #string comparisons
-      expect(Matcher.match_indices_for_strings(candidate_string, target_string_with_match)).to be_kind_of(Array)
-      #using new_string and new_substring to easily verify position
-      expect(Matcher.match_indices_for_strings(new_candidate_string, new_target_string_with_match)).to eq([4,9])
-      expect(Matcher.match_indices_for_strings(candidate_string, target_string_with_no_match)).to be_kind_of(Array)
-      expect(Matcher.match_indices_for_strings(candidate_string, target_string_with_no_match)).to eq([])
-
-    end
-
-  end
 
 end
