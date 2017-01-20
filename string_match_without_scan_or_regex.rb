@@ -1,36 +1,35 @@
-def match?(string, substring)
-  string_array = string.split("")
-  substring_array = substring.split("")
-  character_matches = []
-  substring_array.each_with_index do |substring_character, substring_index|
-    find_character_match(string_array, substring_array, substring_character, substring_index, character_matches)
-  end
-  character_matches.join("") == substring ? true : false
-end
+class StringMatcher
+  class << self
 
-def find_character_match(string_array, substring_array, substring_character, substring_index, character_matches)
-  if string_array.include?(substring_character)
-    if substring_index == 0
-      character_matches.push(substring_character)
-    elsif substring_index > 0
-      string_array.each_with_index do |string_character, string_index|
+    def recursive_match?(candidate, target)
+      candidate_string = candidate.to_s
+      target_string = target.to_s
+      matches = generate_matches_recursively(candidate_string, target_string, [])
+      matches.include?(target_string)
+    end
 
-        characters_do_match = string_character == substring_character
-        previous_string_index_not_negative = string_index - 1 > -1
-        previous_characters_do_match = string_array[string_index - 1] == substring_array[substring_index - 1]
+    def iterative_match?(candidate, target)
+      candidate_string = candidate.to_s
+      target_string = target.to_s
+      matches = generate_matches_iteratively(candidate_string, target_string)
+      matches.include?(target_string)
+    end
 
-        if characters_do_match && previous_string_index_not_negative && previous_characters_do_match
-          character_matches.push(substring_character)
-          break
-        end
+    private
+
+    #for first pass, collection_of_matches should be []
+    def generate_matches_recursively(candidate, target, collection_of_matches)
+      candidate.start_with?(target) ? collection_of_matches.push(target) : collection_of_matches.push(nil)
+      return collection_of_matches if candidate.empty?
+      next_section = candidate.slice(1, candidate.length)
+      generate_matches_recursively(next_section, target, collection_of_matches)
+    end
+
+    def generate_matches_iteratively(candidate, target)
+      candidate.split("").each_index.map do |index|
+        target if candidate.slice(index, target.length).start_with?(target)
       end
     end
+
   end
 end
-
-p match?("likes", "like") == true
-p match?("muchlikes", "like") == true
-p match?("ikelmuchlikes", "like") == true
-p match?("bass1lurv", " 1lurv") == false
-p match?("1basslurv", "1lurv") == false
-p match?("ikemarl", "like") == false
